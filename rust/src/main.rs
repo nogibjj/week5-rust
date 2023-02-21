@@ -13,8 +13,9 @@ fn handle_client(mut stream: TcpStream) -> io::Result<()>{
         if bytes_read == 0{
             return Ok(());
         }
- 
+  
         stream.write(&buf[..bytes_read])?;
+        println!("Request: {}", String::from_utf8_lossy(&buf[..]));
         thread::sleep(time::Duration::from_secs(1));
  
     }
